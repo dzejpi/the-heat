@@ -105,6 +105,9 @@ func _input(event):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			is_options_menu_displayed = false
+			
+	if Input.is_action_just_pressed("game_action"):
+		process_player_action_on_object(observed_object)
 
 
 func _process(delta):
@@ -121,7 +124,9 @@ func _process(delta):
 		if collision_object != observed_object:
 			observed_object = collision_object
 			print("Player is looking at: nothing.")
+			prompt_label.text = ""	
 	
+	process_object_prompt(observed_object)
 
 func _physics_process(delta):
 	
@@ -190,3 +195,23 @@ func carried_item_change():
 			carry_status_label.text = "Crops"
 			tooltip_label.text = "Take crops to the storage"
 			selected_item_sprite.texture = selected_item_crops
+
+
+func process_player_action_on_object(observed_object):
+	match(observed_object):
+		"Well":
+			if carried_object == 3:
+				if is_bucket_empty:
+					is_bucket_empty = false
+					carried_item_change()
+
+func process_object_prompt(observed_object):
+	match(observed_object):
+		"Well":
+			if carried_object == 3:
+				if is_bucket_empty:
+					prompt_label.text = "Take water"
+				else:
+					prompt_label.text = "Bucket full"
+			else:
+				prompt_label.text = "You need a bucket"

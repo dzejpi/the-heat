@@ -1,12 +1,12 @@
 extends Spatial
 
 
-#var a = 2
+# var a = a
 
 
-#func _ready():
-#	pass
+func _ready():
+	pass
 
 
-#func _process(delta):
-#	pass
+func _process(delta):
+	pass
