@@ -24,7 +24,7 @@ script = ExtResource( 3 )
 
 [node name="PauseScene" parent="Pause" instance=ExtResource( 1 )]
 visible = false
-position = Vector2( 512, 192 )
+position = Vector2( 558, 272 )
 
 [node name="TransitionOverlay" parent="." instance=ExtResource( 2 )]
 
