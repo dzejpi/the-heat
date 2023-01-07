@@ -213,16 +213,18 @@ func process_player_action_on_object(observed_object, raycast_object):
 			if carried_object == 2:
 				var is_crop_on_fire = raycast_object.check_fire_status()
 				if !is_crop_on_fire:
-					raycast_object.harvest_crop()
-					carried_object = 5
-					carried_item_change()
+					var is_crop_harvestable = raycast_object.check_harvestability()
+					if is_crop_harvestable:
+						raycast_object.harvest_crop()
+						carried_object = 5
+						carried_item_change()
 			if carried_object == 3:
 				if !is_bucket_empty:
 					raycast_object.extinguish_fire()
 					is_bucket_empty = true
 					selected_item_sprite.texture = selected_item_bucket_empty
 			if carried_object == 4:
-				pass
+				raycast_object.destroy_crop()
 
 func process_object_prompt(observed_object, raycast_object):
 	match(observed_object):
@@ -241,7 +243,11 @@ func process_object_prompt(observed_object, raycast_object):
 			if carried_object == 2:
 				var is_crop_on_fire = raycast_object.check_fire_status()
 				if !is_crop_on_fire:
-					prompt_label.text = "Harvest crop"
+					var is_crop_harvestable = raycast_object.check_harvestability()
+					if is_crop_harvestable:
+						prompt_label.text = "Harvest crop"
+					else:
+						prompt_label.text = "Nothing to harvest"
 				else:
 					prompt_label.text = "Put out fire first"
 			if carried_object == 3:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/visual/crops/ase_crops_sorghum_fresh.png" type="Texture" id=1]
 [ext_resource path="res://scripts/SorghumScript.gd" type="Script" id=2]
 [ext_resource path="res://resources/spriteframes_big_fire.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://assets/visual/crops/ase_destroyed_ground.png" type="Texture" id=4]
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.25
@@ -27,3 +28,7 @@ animation = "no_animation"
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.648489, 0 )
 shape = SubResource( 1 )
+
+[node name="DestroyedGround" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.02, 0 )
+texture = ExtResource( 4 )
