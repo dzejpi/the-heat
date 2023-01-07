@@ -15,6 +15,7 @@ func _ready():
 
 func load_grain_mill():
 	raise_mill_crops()
+	GlobalVar.collected_grains += 1
 	
 
 func raise_mill_crops():

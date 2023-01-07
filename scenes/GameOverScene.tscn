@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/GameOverScene.gd" type="Script" id=1]
+[ext_resource path="res://scripts/MainMenuButton.gd" type="Script" id=3]
+[ext_resource path="res://assets/visual/ui/main_menu/menu_btn_focused.png" type="Texture" id=4]
+[ext_resource path="res://assets/visual/ui/main_menu/menu_btn_normal.png" type="Texture" id=5]
+[ext_resource path="res://assets/visual/ui/main_menu/menu_btn_pressed.png" type="Texture" id=6]
+[ext_resource path="res://assets/visual/ui/main_menu/menu_btn_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/visual/ui/main_menu/menu_btn_disabled.png" type="Texture" id=8]
+[ext_resource path="res://resources/font_main_menu_80.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/fonts/portmanteau/portmanteau_regular.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 12 )
+
+[node name="GameOverScene" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="GameName" type="Node2D" parent="."]
+position = Vector2( 422, 64 )
+
+[node name="GameLabel" type="Label" parent="GameName"]
+margin_left = 32.0
+margin_right = 830.0
+margin_bottom = 121.0
+custom_fonts/font = SubResource( 1 )
+text = "Game over"
+
+[node name="MainMenuButton" type="TextureButton" parent="."]
+margin_left = 620.0
+margin_top = 750.0
+margin_right = 1104.0
+margin_bottom = 834.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 4 )
+expand = true
+script = ExtResource( 3 )
+
+[node name="MainMenuLabel" type="Label" parent="MainMenuButton"]
+margin_right = 484.0
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 9 )
+text = "Main Menu"
+align = 1
+valign = 1
+
+[node name="StatusLabels" type="Node2D" parent="."]
+position = Vector2( 0, 360 )
+
+[node name="CropsHarvestedLabel" type="Label" parent="StatusLabels"]
+margin_right = 1600.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 9 )
+text = "Crops harvested: "
+align = 1
+
+[node name="DaysLeftLabel" type="Label" parent="StatusLabels"]
+margin_top = 96.0
+margin_right = 1600.0
+margin_bottom = 157.0
+custom_fonts/font = ExtResource( 9 )
+text = "It will all be over in 30 days."
+align = 1
+
+[node name="GameOverBackground" type="Sprite" parent="."]
+
+[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_MainMenuButton_pressed"]
