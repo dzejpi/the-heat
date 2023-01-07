@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/PauseScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/TransitionOverlay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/GameSceneOne.gd" type="Script" id=3]
 [ext_resource path="res://scenes/PlayerScene.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/EnvironmentScene.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/visual/skybox/ase_skybox.png" type="Texture" id=6]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 6 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
 
 [node name="GameSceneOne" type="Spatial"]
 script = ExtResource( 3 )
@@ -23,3 +32,6 @@ position = Vector2( 512, 192 )
 
 [node name="Environment" parent="." instance=ExtResource( 5 )]
 transform = Transform( -4, 1.50996e-07, 0, -6.03983e-07, -1, 0, 0, 0, 4, 0, -1, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
