@@ -4,6 +4,12 @@ extends KinematicBody
 onready var player_head = $PlayerHead
 onready var ray = $PlayerHead/RayCast
 
+onready var crop_status_label = $UILabels/CropLabels/CropStatusLabel
+onready var crop_health_label = $UILabels/CropLabels/CropHealthLabel
+onready var carry_status_label = $UILabels/SelectedTools/CarryStatusLabel
+onready var tooltip_label = $UILabels/SelectedTools/TooltipLabel
+onready var prompt_label = $UILabels/ActionLabel
+
 var speed = 8
 var jump = 8
 var gravity = 16
@@ -26,9 +32,16 @@ var is_options_menu_displayed = false
 # Name of the observed object for debugging purposes
 var observed_object = "" 
 
+var carrying_object = 0
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	crop_status_label.text = ""
+	crop_health_label.text = ""
+	carry_status_label.text = ""
+	tooltip_label.text = ""
+	prompt_label.text = ""
 
 
 func _input(event):
@@ -69,6 +82,8 @@ func _process(delta):
 	
 
 func _physics_process(delta):
+	
+	
 	if is_on_floor():
 		gravity_vector = -get_floor_normal() * slide_prevention
 		acceleration = ground_acceleration
@@ -96,3 +111,21 @@ func _physics_process(delta):
 	
 	move_and_slide(movement, Vector3.UP)
 	
+
+func carried_item_check():
+	match(carrying_object):
+		# Hands
+		0:
+			pass
+		# Sickle
+		1:
+			pass
+		# Bucket
+		2:
+			pass
+		# Spade
+		3:
+			pass
+		# Crops
+		4:
+			pass

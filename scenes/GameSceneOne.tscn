@@ -21,12 +21,6 @@ script = ExtResource( 3 )
 
 [node name="GameNode" type="Node" parent="."]
 
-[node name="Pause" type="Node" parent="."]
-
-[node name="PauseScene" parent="Pause" instance=ExtResource( 1 )]
-visible = false
-position = Vector2( 558, 272 )
-
 [node name="Player" parent="." instance=ExtResource( 4 )]
 
 [node name="Environment" parent="." instance=ExtResource( 5 )]
@@ -50,3 +44,9 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.91995, 0, 1.09909 )
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 4 )
 
 [node name="TransitionOverlay" parent="." instance=ExtResource( 2 )]
+
+[node name="Pause" type="Node" parent="."]
+
+[node name="PauseScene" parent="Pause" instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 558, 272 )
