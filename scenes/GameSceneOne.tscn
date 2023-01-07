@@ -323,6 +323,8 @@ transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708
 transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708, 0, -47.421 )
 
 [node name="Demon" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.771969, 0.635661, 0, -0.635661, 0.771969, 0, 34.5024, 0 )
+visible = false
 
 [node name="Tzitzimitl" parent="Demon" instance=ExtResource( 10 )]
-transform = Transform( 4, 0, 0, 0, 3.07934, 2.55298, 0, -2.55298, 3.07934, -2.44371, 46.9574, 45.3418 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4.94171, 76.0688 )
