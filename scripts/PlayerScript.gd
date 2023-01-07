@@ -61,7 +61,7 @@ func _ready():
 
 
 func _input(event):
-	if !is_options_menu_displayed:
+	if !GlobalVar.is_game_paused:
 		if event is InputEventMouseMotion:
 			rotation_degrees.y -= event.relative.x * mouse_sensitivity / 10
 			player_head.rotation_degrees.x = clamp(player_head.rotation_degrees.x - event.relative.y * mouse_sensitivity / 10, -90, 90)
@@ -100,17 +100,17 @@ func _input(event):
 	# Handling the options menu
 	if Input.is_action_just_pressed("ui_cancel"):
 		if !GlobalVar.is_game_paused:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			is_options_menu_displayed = true
+			GlobalVar.is_game_paused = true
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			is_options_menu_displayed = false
+			GlobalVar.is_game_paused = false
 			
 	if Input.is_action_just_pressed("game_action"):
 		process_player_action_on_object(observed_object)
 
 
 func _process(delta):
+	# Check whether the game is paused and show/hide cursor
+	manage_mouse_focus()
 	
 	# If player is looking at something
 	if ray.is_colliding():
@@ -215,3 +215,12 @@ func process_object_prompt(observed_object):
 					prompt_label.text = "Bucket full"
 			else:
 				prompt_label.text = "You need a bucket"
+
+
+func manage_mouse_focus():
+	if is_options_menu_displayed != GlobalVar.is_game_paused:
+		is_options_menu_displayed = GlobalVar.is_game_paused
+		if GlobalVar.is_game_paused:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
