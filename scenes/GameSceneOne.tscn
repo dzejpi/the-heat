@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/PauseScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/TransitionOverlay.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/SorghumScene.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/3d/blend_well.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://scenes/FenceScene.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/TzitzimitlScene.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CylinderShape" id=3]
 height = 0.947764
@@ -320,3 +321,8 @@ transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708
 
 [node name="Fence20" parent="FenceNodes/FenceOneSide4" instance=ExtResource( 9 )]
 transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708, 0, -47.421 )
+
+[node name="Demon" type="Spatial" parent="."]
+
+[node name="Tzitzimitl" parent="Demon" instance=ExtResource( 10 )]
+transform = Transform( 4, 0, 0, 0, 3.07934, 2.55298, 0, -2.55298, 3.07934, -2.44371, 46.9574, 45.3418 )
