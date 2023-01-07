@@ -21,7 +21,7 @@ enabled = true
 cast_to = Vector3( 0, 0, -3 )
 collide_with_areas = true
 
-[node name="CelectedItemSprite" type="Sprite3D" parent="PlayerHead"]
+[node name="SelectedItemSprite" type="Sprite3D" parent="PlayerHead"]
 transform = Transform( 0.999493, -0.0199255, 0.0248193, -0.0133308, 0.446024, 0.894922, -0.0289018, -0.894799, 0.445533, 0.5, -0.463007, -0.318833 )
 centered = false
 offset = Vector2( -64, 0 )

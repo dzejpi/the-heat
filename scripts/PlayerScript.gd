@@ -1,14 +1,26 @@
 extends KinematicBody
 
 
+# Head
 onready var player_head = $PlayerHead
 onready var ray = $PlayerHead/RayCast
 
+# Labels
 onready var crop_status_label = $UILabels/CropLabels/CropStatusLabel
 onready var crop_health_label = $UILabels/CropLabels/CropHealthLabel
 onready var carry_status_label = $UILabels/SelectedTools/CarryStatusLabel
 onready var tooltip_label = $UILabels/SelectedTools/TooltipLabel
 onready var prompt_label = $UILabels/ActionLabel
+
+onready var selected_item_sprite = $PlayerHead/SelectedItemSprite
+
+# Sprites
+var selected_item_hands = preload("res://assets/visual/items/spr_empty_hands.png")
+var selected_item_sickle = preload("res://assets/visual/items/spr_sickle.png")
+var selected_item_bucket_empty = preload("res://assets/visual/items/spr_bucket_empty.png")
+var selected_item_bucket_water = preload("res://assets/visual/items/spr_bucket_water.png")
+var selected_item_spade = preload("res://assets/visual/items/spr_spade.png")
+var selected_item_crops = preload("res://assets/visual/items/spr_harvested_crops.png")
 
 var speed = 8
 var jump = 8
@@ -32,7 +44,9 @@ var is_options_menu_displayed = false
 # Name of the observed object for debugging purposes
 var observed_object = "" 
 
-var carrying_object = 0
+var is_carrying_crops = false
+var is_bucket_empty = true
+var carried_object = 1
 
 
 func _ready():
@@ -42,6 +56,8 @@ func _ready():
 	carry_status_label.text = ""
 	tooltip_label.text = ""
 	prompt_label.text = ""
+	selected_item_sprite.texture = selected_item_hands
+	carried_item_change()
 
 
 func _input(event):
@@ -54,6 +70,32 @@ func _input(event):
 		direction.z = -Input.get_action_strength("move_up") + Input.get_action_strength("move_down")
 		direction.x = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
 		direction = direction.normalized().rotated(Vector3.UP, rotation.y)
+	
+		if carried_object != 5:
+			if Input.is_action_just_pressed("item_1"):
+				carried_object = 1
+				carried_item_change()
+			if Input.is_action_just_pressed("item_2"):
+				carried_object = 2
+				carried_item_change()
+			if Input.is_action_just_pressed("item_3"):
+				carried_object = 3
+				carried_item_change()
+			if Input.is_action_just_pressed("item_4"):
+				carried_object = 4
+				carried_item_change()
+			if Input.is_action_just_pressed("item_change_up"):
+				if carried_object < 4:
+					carried_object += 1
+				else:
+					carried_object = 1
+				carried_item_change()
+			if Input.is_action_just_pressed("item_change_down"):
+				if carried_object > 1:
+					carried_object -= 1
+				else:
+					carried_object = 4
+				carried_item_change()
 	
 	# Handling the options menu
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -112,20 +154,39 @@ func _physics_process(delta):
 	move_and_slide(movement, Vector3.UP)
 	
 
-func carried_item_check():
-	match(carrying_object):
+func carried_item_change():
+	match(carried_object):
 		# Hands
-		0:
-			pass
-		# Sickle
 		1:
-			pass
-		# Bucket
+			carry_status_label.text = ""
+			tooltip_label.text = ""
+			selected_item_sprite.texture = selected_item_hands
+		
+		# Sickle
 		2:
-			pass
-		# Spade
+			carry_status_label.text = "Sickle"
+			tooltip_label.text = "Use to harvest crops"
+			selected_item_sprite.texture = selected_item_sickle
+			
+		# Bucket
 		3:
-			pass
-		# Crops
+			if is_bucket_empty:
+				carry_status_label.text = "Empty bucket"
+				tooltip_label.text = "Has to be filled with water"
+				selected_item_sprite.texture = selected_item_bucket_empty
+			else:
+				carry_status_label.text = "Bucket with water"
+				tooltip_label.text = "Use to put out fire"
+				selected_item_sprite.texture = selected_item_bucket_water
+		
+		# Spade
 		4:
-			pass
+			carry_status_label.text = "Spade"
+			tooltip_label.text = "Destroy crops"
+			selected_item_sprite.texture = selected_item_spade
+		
+		# Crops
+		5:
+			carry_status_label.text = "Crops"
+			tooltip_label.text = "Take crops to the storage"
+			selected_item_sprite.texture = selected_item_crops
