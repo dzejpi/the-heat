@@ -6,18 +6,24 @@ var on_move = true
 var start_area = null
 var is_start_area_set = false
 var fire_out_timer = 6
-#var speed = 4
-#var global_direction = Vector3(0, 0, 1)
+var speed = 1
+var global_direction = Vector3(0, 0, 1)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	rotation.y = rand_range(1, 359)
 
 
 func _process(delta):
 	if on_move:
-		self.global_transform.origin.x += (2 * delta)
+		if self.global_transform.origin.y <= 0.25:
+			on_move = false
+		else:
+			var local_direction = global_direction.rotated(Vector3(0, 1, 0), rotation.y)
+			var velocity = local_direction * speed
+			move_and_slide(velocity)
+			self.global_transform.origin.y -= (0.25 * delta)
 	else:
 		if fire_out_timer > 0:
 			fire_out_timer -= (1 * delta)

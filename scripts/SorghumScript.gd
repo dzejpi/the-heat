@@ -12,13 +12,16 @@ onready var plant_sprite = $SorghumPlantSprite
 onready var plant_fire_sprite = $SorghumFireSprite
 onready var destroyed_ground = $DestroyedGround
 
+onready var amber_scene = preload("res://scenes/AmberScene.tscn")
+
 var healthy_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_fresh.png")
 var harvested_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_harvested.png")
 var damaged_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_damaged.png")
 var burned_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_burned.png")
 
 var current_status = "healthy"
-
+var amber_timeout = 4
+var amber_current_timeout = amber_timeout
 
 func _ready():
 	update_crop_sprite()
@@ -34,6 +37,14 @@ func _process(delta):
 func manage_fire(delta):
 	if is_burning:
 		health -= (burn_rate * delta)
+		
+		if health < 50:
+			if amber_current_timeout > 0:
+				amber_current_timeout -= (1 * delta)
+			else:
+				spawn_amber()
+				amber_current_timeout = amber_timeout
+		
 		if health <= 0:
 			health = 0
 			is_burned = true
@@ -122,10 +133,18 @@ func destroy_crop():
 	is_burned = true
 
 
-
 func _on_Sorghum_body_entered(body):
 	print("Body " + body.name + "entered crop.")
 	
 	if body.name != "Player":
 		is_burning = true
 		update_crop_sprite()
+
+
+func spawn_amber():
+	var amber_instance = amber_scene.instance()
+	add_child(amber_instance)
+	amber_instance.global_transform.origin.x = self.global_transform.origin.x
+	amber_instance.global_transform.origin.y = 2
+	amber_instance.global_transform.origin.z = self.global_transform.origin.z
+
