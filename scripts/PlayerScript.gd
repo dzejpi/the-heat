@@ -62,7 +62,7 @@ func _ready():
 
 
 func _input(event):
-	if !GlobalVar.is_game_paused:
+	if !GlobalVar.is_game_paused && !GlobalVar.is_game_over:
 		if event is InputEventMouseMotion:
 			rotation_degrees.y -= event.relative.x * mouse_sensitivity / 10
 			player_head.rotation_degrees.x = clamp(player_head.rotation_degrees.x - event.relative.y * mouse_sensitivity / 10, -90, 90)
@@ -100,10 +100,11 @@ func _input(event):
 	
 	# Handling the options menu
 	if Input.is_action_just_pressed("ui_cancel"):
-		if !GlobalVar.is_game_paused:
-			GlobalVar.is_game_paused = true
-		else:
-			GlobalVar.is_game_paused = false
+		if !GlobalVar.is_game_over:
+			if !GlobalVar.is_game_paused:
+				GlobalVar.is_game_paused = true
+			else:
+				GlobalVar.is_game_paused = false
 			
 	if Input.is_action_just_pressed("game_action"):
 		process_player_action_on_object(observed_object, ray.get_collider())
@@ -285,6 +286,8 @@ func manage_mouse_focus():
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if GlobalVar.is_game_over:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func update_field_count():
