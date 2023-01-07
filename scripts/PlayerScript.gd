@@ -225,10 +225,18 @@ func process_player_action_on_object(observed_object, raycast_object):
 					selected_item_sprite.texture = selected_item_bucket_empty
 			if carried_object == 4:
 				raycast_object.destroy_crop()
+		"GrainBin":
+			if carried_object == 5:
+				raycast_object.load_grain_mill()
+				carried_object = 1
+				carried_item_change()
+				
 
 func process_object_prompt(observed_object, raycast_object):
 	match(observed_object):
 		"Well":
+			if carried_object == 1:
+				prompt_label.text = "Fill your bucket here"
 			if carried_object == 3:
 				if is_bucket_empty:
 					prompt_label.text = "Take water"
@@ -261,6 +269,11 @@ func process_object_prompt(observed_object, raycast_object):
 					prompt_label.text = "Get water first"
 			if carried_object == 4:
 				prompt_label.text = "Destroy crop"
+		"GrainBin":
+			if carried_object == 5:
+				prompt_label.text = "Unload crop"
+			else:
+				prompt_label.text = "Harvest crop and drop it here"
 
 
 func manage_mouse_focus():

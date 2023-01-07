@@ -12,7 +12,7 @@
 [ext_resource path="res://scenes/TzitzimitlScene.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/CropGenerator.gd" type="Script" id=11]
 [ext_resource path="res://scenes/EnvironmentBackScene.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/visual/grain_bin/blend_grain_mil_crops.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://assets/visual/grain_bin/blend_grain_mill_crops.obj" type="ArrayMesh" id=13]
 [ext_resource path="res://assets/visual/grain_bin/blend_grain_mill.obj" type="ArrayMesh" id=14]
 [ext_resource path="res://scripts/GrainBin.gd" type="Script" id=15]
 
@@ -380,7 +380,8 @@ transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4.94171, 76.0688 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -4 )
 script = ExtResource( 15 )
 
-[node name="blend_grain_mil_crops" type="MeshInstance" parent="GrainBin"]
+[node name="blend_grain_mill_crops" type="MeshInstance" parent="GrainBin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0 )
 mesh = ExtResource( 13 )
 skeleton = NodePath("../..")
 

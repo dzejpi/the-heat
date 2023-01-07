@@ -19,19 +19,23 @@ var harvested_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghu
 var damaged_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_damaged.png")
 var burned_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_burned.png")
 
+var crop_counted = false
 var current_status = "healthy"
 var amber_timeout = 2
 var amber_current_timeout = amber_timeout
 
 func _ready():
 	update_crop_sprite()
-	GlobalVar.field_amount += 1
 	destroyed_ground.hide()
 
 
 func _process(delta):
 	if is_burning && !is_burned:
 		manage_fire(delta)
+	
+	if !crop_counted:
+		GlobalVar.field_amount += 1
+		crop_counted = true
 
 
 func manage_fire(delta):

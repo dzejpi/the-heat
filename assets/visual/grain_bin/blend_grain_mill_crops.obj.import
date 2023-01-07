@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blend_grain_mill_crops.obj-e0b93e12288869eb9879f6ca2677a241.mesh"
+
+[deps]
+
+files=[ "res://.import/blend_grain_mill_crops.obj-e0b93e12288869eb9879f6ca2677a241.mesh" ]
+
+source_file="res://assets/visual/grain_bin/blend_grain_mill_crops.obj"
+dest_files=[ "res://.import/blend_grain_mill_crops.obj-e0b93e12288869eb9879f6ca2677a241.mesh", "res://.import/blend_grain_mill_crops.obj-e0b93e12288869eb9879f6ca2677a241.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
