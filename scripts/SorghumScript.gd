@@ -19,6 +19,7 @@ var burned_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_b
 
 func _ready():
 	update_crop_sprite()
+	GlobalVar.fields += 1
 
 
 func _process(delta):

@@ -7,6 +7,7 @@ onready var music_node = $MusicPlayer
 var is_game_over = false
 var is_game_paused = false
 
+var field_amount = 0
 
 #func _ready():
 #	pass

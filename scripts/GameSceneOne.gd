@@ -5,7 +5,7 @@ extends Spatial
 
 
 func _ready():
-	pass
+	GlobalVar.field_amount = 0
 
 
 func _process(delta):

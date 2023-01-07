@@ -52,11 +52,11 @@ transform = Transform( -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, -1, 
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.299, 0, 5 )
 
 [node name="Sorghum3" parent="Crops" instance=ExtResource( 7 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.91995, 0, 6.06771 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.223051, 0, 7.50479 )
 is_burning = true
 
 [node name="Sorghum4" parent="Crops" instance=ExtResource( 7 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.91995, 0, 1.09909 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0733445, 0, 1.09909 )
 
 [node name="Sorghum" parent="Crops" instance=ExtResource( 7 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 4 )
