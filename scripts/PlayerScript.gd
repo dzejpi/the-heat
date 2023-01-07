@@ -11,6 +11,7 @@ onready var crop_health_label = $UILabels/CropLabels/CropHealthLabel
 onready var carry_status_label = $UILabels/SelectedTools/CarryStatusLabel
 onready var tooltip_label = $UILabels/SelectedTools/TooltipLabel
 onready var prompt_label = $UILabels/ActionLabel
+onready var fields_left_label = $UILabels/TopLabels/CropsLeftLabel
 
 onready var selected_item_sprite = $PlayerHead/SelectedItemSprite
 
@@ -111,6 +112,7 @@ func _input(event):
 func _process(delta):
 	# Check whether the game is paused and show/hide cursor
 	manage_mouse_focus()
+	update_field_count()
 	
 	# If player is looking at something
 	if ray.is_colliding():
@@ -283,3 +285,7 @@ func manage_mouse_focus():
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func update_field_count():
+	fields_left_label.text = "Fields left: " + String(GlobalVar.field_amount)

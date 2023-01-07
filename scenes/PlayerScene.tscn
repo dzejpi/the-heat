@@ -76,3 +76,12 @@ margin_right = 1024.0
 margin_bottom = 489.0
 custom_fonts/font = ExtResource( 2 )
 text = "Take water"
+
+[node name="TopLabels" type="Node2D" parent="UILabels"]
+position = Vector2( 32, 32 )
+
+[node name="CropsLeftLabel" type="Label" parent="UILabels/TopLabels"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 2 )
+text = "Fields left:"
