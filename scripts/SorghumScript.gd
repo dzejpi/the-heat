@@ -24,6 +24,7 @@ var current_status = "healthy"
 var amber_timeout = 2
 var amber_current_timeout = amber_timeout
 
+
 func _ready():
 	update_crop_sprite()
 	destroyed_ground.hide()
@@ -168,7 +169,7 @@ func spawn_amber():
 
 func check_fields_on_fire():
 	if GlobalVar.fields_on_fire < 2:
-		var randomNumber = randi()%101+1
+		var randomNumber = randi() % 101 + 1
 		if randomNumber == 1:
 			if !is_burning:
 				GlobalVar.fields_on_fire += 1
