@@ -20,4 +20,9 @@ animations = [ {
 "loop": true,
 "name": "crop_small_fire",
 "speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "no_animation",
+"speed": 5.0
 } ]

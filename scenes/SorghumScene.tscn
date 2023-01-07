@@ -22,8 +22,7 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 offset = Vector2( 0, 128 )
 billboard = 2
 frames = ExtResource( 3 )
-animation = "crop_big_fire"
-frame = 2
+animation = "no_animation"
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.648489, 0 )
