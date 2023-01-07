@@ -64,6 +64,11 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 32.0856, 0, -39.2304 )
 health = 60
 is_burning = true
 
+[node name="Sorghum4" parent="Crops" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 32.0856, 0, 31.6112 )
+health = 60
+is_burning = true
+
 [node name="CropGenerator" type="Node" parent="Crops"]
 script = ExtResource( 11 )
 
@@ -330,7 +335,6 @@ transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708
 
 [node name="Demon" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.771969, 0.635661, 0, -0.635661, 0.771969, 0, 34.5024, 0 )
-visible = false
 
 [node name="Tzitzimitl" parent="Demon" instance=ExtResource( 10 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4.94171, 76.0688 )
