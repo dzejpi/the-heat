@@ -20,7 +20,7 @@ var damaged_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_
 var burned_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_burned.png")
 
 var current_status = "healthy"
-var amber_timeout = 4
+var amber_timeout = 2
 var amber_current_timeout = amber_timeout
 
 func _ready():

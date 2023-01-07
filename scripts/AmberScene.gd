@@ -6,7 +6,7 @@ var on_move = true
 var start_area = null
 var is_start_area_set = false
 var fire_out_timer = 6
-var speed = 1
+var speed = 3
 var global_direction = Vector3(0, 0, 1)
 
 
