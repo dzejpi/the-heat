@@ -70,15 +70,26 @@ func generate_crops():
 	for i in range(0, x_pos_array.size() - 1):
 		for j in range(0, z_pos_array.size() - 1):
 			
-			var sorghum_instance = sorghum_scene.instance()
-			add_child(sorghum_instance)
-			
-			sorghum_instance.global_transform.origin.x = x_pos_array[i]
-			sorghum_instance.global_transform.origin.y = crop_y_position
-			sorghum_instance.global_transform.origin.z = z_pos_array[j]
-			
+			# Avoid generating crops in [(15, 9) - (18, 14)] rectangle - farm is there 
+			if i >= 15 && i <= 18:
+				if j >= 9 && j <= 14:
+					pass
+				else:
+					var sorghum_instance = sorghum_scene.instance()
+					add_child(sorghum_instance)
+					
+					sorghum_instance.global_transform.origin.x = x_pos_array[i]
+					sorghum_instance.global_transform.origin.y = crop_y_position
+					sorghum_instance.global_transform.origin.z = z_pos_array[j]
+			else:
+				var sorghum_instance = sorghum_scene.instance()
+				add_child(sorghum_instance)
+				
+				sorghum_instance.global_transform.origin.x = x_pos_array[i]
+				sorghum_instance.global_transform.origin.y = crop_y_position
+				sorghum_instance.global_transform.origin.z = z_pos_array[j]
+				
 			j += 1
+			
 		i += 1
 	
-	
-
