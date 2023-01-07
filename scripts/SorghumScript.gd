@@ -6,8 +6,7 @@ export var is_burning = false
 export var is_damaged = false
 export var is_burned = false
 export var is_harvested = false
-export var burn_rate = 8
-
+export var burn_rate = 4
 
 onready var plant_sprite = $SorghumPlantSprite
 onready var plant_fire_sprite = $SorghumFireSprite
@@ -16,6 +15,8 @@ var healthy_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_
 var harvested_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_harvested.png")
 var damaged_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_damaged.png")
 var burned_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_burned.png")
+
+var current_status = "healthy"
 
 
 func _ready():
@@ -32,6 +33,7 @@ func manage_fire(delta):
 	if is_burning:
 		health -= (burn_rate * delta)
 		if health <= 0:
+			health = 0
 			is_burned = true
 			is_burning = false
 			GlobalVar.field_amount -= 1
@@ -66,3 +68,37 @@ func change_fire_animation():
 			plant_fire_sprite.play("crop_small_fire")
 		else:
 			plant_fire_sprite.play("crop_big_fire")
+	else:
+		plant_fire_sprite.animation = "no_animation"
+
+
+func get_health():
+	return health
+
+
+func get_crop_status():
+	if is_burning:
+		current_status = "burning"
+	elif is_damaged:
+		current_status = "damaged"
+	elif is_burned:
+		current_status = "destroyed"
+	else:
+		current_status = "healthy"
+	
+	return current_status
+
+
+func extinguish_fire():
+	is_burning = false
+	change_fire_animation()
+
+
+func check_fire_status():
+	return is_burning
+
+
+func harvest_crop():
+	is_harvested = true
+	update_crop_sprite()
+	GlobalVar.field_amount -= 1

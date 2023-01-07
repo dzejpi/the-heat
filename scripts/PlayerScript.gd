@@ -105,7 +105,7 @@ func _input(event):
 			GlobalVar.is_game_paused = false
 			
 	if Input.is_action_just_pressed("game_action"):
-		process_player_action_on_object(observed_object)
+		process_player_action_on_object(observed_object, ray.get_collider())
 
 
 func _process(delta):
@@ -115,18 +115,23 @@ func _process(delta):
 	# If player is looking at something
 	if ray.is_colliding():
 		var collision_object = ray.get_collider().name
+		var watched_object = ray.get_collider()
 		
 		if collision_object != observed_object:
 			observed_object = collision_object
+			if "Sorg" in observed_object:
+				observed_object = "Sorghum"
 			print("Player is looking at: " + observed_object + ".")
+			process_object_prompt(observed_object, watched_object)
 	else:
 		var collision_object = "nothing"
 		if collision_object != observed_object:
 			observed_object = collision_object
 			print("Player is looking at: nothing.")
 			prompt_label.text = ""	
-	
-	process_object_prompt(observed_object)
+		process_object_prompt(observed_object, "")
+		crop_health_label.text = ""
+		crop_status_label.text = ""
 
 func _physics_process(delta):
 	
@@ -197,15 +202,29 @@ func carried_item_change():
 			selected_item_sprite.texture = selected_item_crops
 
 
-func process_player_action_on_object(observed_object):
+func process_player_action_on_object(observed_object, raycast_object):
 	match(observed_object):
 		"Well":
 			if carried_object == 3:
 				if is_bucket_empty:
 					is_bucket_empty = false
 					carried_item_change()
+		"Sorghum":
+			if carried_object == 2:
+				var is_crop_on_fire = raycast_object.check_fire_status()
+				if !is_crop_on_fire:
+					raycast_object.harvest_crop()
+					carried_object = 5
+					carried_item_change()
+			if carried_object == 3:
+				if !is_bucket_empty:
+					raycast_object.extinguish_fire()
+					is_bucket_empty = true
+					selected_item_sprite.texture = selected_item_bucket_empty
+			if carried_object == 4:
+				pass
 
-func process_object_prompt(observed_object):
+func process_object_prompt(observed_object, raycast_object):
 	match(observed_object):
 		"Well":
 			if carried_object == 3:
@@ -215,6 +234,27 @@ func process_object_prompt(observed_object):
 					prompt_label.text = "Bucket full"
 			else:
 				prompt_label.text = "You need a bucket"
+		"Sorghum":
+			crop_health_label.text = "Health: " + String(int(raycast_object.get_health()))
+			crop_status_label.text = "Crop status: " + raycast_object.get_crop_status()
+			
+			if carried_object == 2:
+				var is_crop_on_fire = raycast_object.check_fire_status()
+				if !is_crop_on_fire:
+					prompt_label.text = "Harvest crop"
+				else:
+					prompt_label.text = "Put out fire first"
+			if carried_object == 3:
+				if !is_bucket_empty:
+					var is_crop_on_fire = raycast_object.check_fire_status()
+					if is_crop_on_fire:
+						prompt_label.text = "Extinguish fire"
+					else:
+						prompt_label.text = "Throw water at"
+				else:
+					prompt_label.text = "Get water first"
+			if carried_object == 4:
+				prompt_label.text = "Destroy crop"
 
 
 func manage_mouse_focus():
