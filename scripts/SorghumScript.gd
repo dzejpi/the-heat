@@ -36,6 +36,8 @@ func _process(delta):
 	if !crop_counted:
 		GlobalVar.field_amount += 1
 		crop_counted = true
+		
+	check_fields_on_fire()
 
 
 func manage_fire(delta):
@@ -51,9 +53,12 @@ func manage_fire(delta):
 		
 		if health <= 0:
 			health = 0
+			if !is_burned:
+				GlobalVar.field_amount -= 1
+				GlobalVar.fields_on_fire -= 1
 			is_burned = true
 			is_burning = false
-			GlobalVar.field_amount -= 1
+			
 			print("Fields left: " + String(GlobalVar.field_amount))
 			update_crop_sprite()
 	if !is_damaged:
@@ -107,6 +112,8 @@ func get_crop_status():
 
 
 func extinguish_fire():
+	if is_burning:
+		GlobalVar.fields_on_fire -= 1
 	is_burning = false
 	change_fire_animation()
 
@@ -123,9 +130,10 @@ func check_harvestability():
 
 
 func harvest_crop():
+	if !is_harvested:
+		GlobalVar.field_amount -= 1
 	is_harvested = true
 	update_crop_sprite()
-	GlobalVar.field_amount -= 1
 	print("Fields left: " + String(GlobalVar.field_amount))
 
 
@@ -134,6 +142,9 @@ func destroy_crop():
 	plant_sprite.hide()
 	plant_fire_sprite.hide()
 	
+	if !is_burned:
+		GlobalVar.field_amount -= 1
+		GlobalVar.fields_on_fire -= 1
 	is_burned = true
 
 
@@ -141,6 +152,8 @@ func _on_Sorghum_body_entered(body):
 	print("Body " + body.name + "entered crop.")
 	
 	if body.name != "Player":
+		if !is_burning:
+			GlobalVar.fields_on_fire += 1
 		is_burning = true
 		update_crop_sprite()
 
@@ -152,3 +165,12 @@ func spawn_amber():
 	amber_instance.global_transform.origin.y = 2
 	amber_instance.global_transform.origin.z = self.global_transform.origin.z
 
+
+func check_fields_on_fire():
+	if GlobalVar.fields_on_fire < 2:
+		var randomNumber = randi()%101+1
+		if randomNumber == 1:
+			if !is_burning:
+				GlobalVar.fields_on_fire += 1
+			is_burning = true
+			update_crop_sprite()
