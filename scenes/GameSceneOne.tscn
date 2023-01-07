@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/PauseScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/TransitionOverlay.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/3d/blend_well.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://scenes/FenceScene.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/TzitzimitlScene.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/AmberScene.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CylinderShape" id=3]
 height = 0.947764
@@ -60,6 +61,12 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0733445, 0, 1.09909 )
 
 [node name="Sorghum" parent="Crops" instance=ExtResource( 7 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 4 )
+
+[node name="Amber" parent="Crops" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30725, 1.95026, 1.00004 )
+
+[node name="Sorghum5" parent="Crops" instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -4.48934, 0, 1.09909 )
 
 [node name="Pause" type="Node" parent="."]
 

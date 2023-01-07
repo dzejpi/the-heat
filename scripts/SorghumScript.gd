@@ -120,3 +120,12 @@ func destroy_crop():
 	plant_fire_sprite.hide()
 	
 	is_burned = true
+
+
+
+func _on_Sorghum_body_entered(body):
+	print("Body " + body.name + "entered crop.")
+	
+	if body.name != "Player":
+		is_burning = true
+		update_crop_sprite()

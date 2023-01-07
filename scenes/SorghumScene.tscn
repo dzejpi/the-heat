@@ -32,3 +32,5 @@ shape = SubResource( 1 )
 [node name="DestroyedGround" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.02, 0 )
 texture = ExtResource( 4 )
+
+[connection signal="body_entered" from="." to="." method="_on_Sorghum_body_entered"]
