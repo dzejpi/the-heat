@@ -4,6 +4,8 @@ extends Node
 onready var sorghum_scene = preload("res://scenes/SorghumScene.tscn")
 
 var crop_y_position = 0
+var random_range_bottom = -0.8
+var random_range_up = 0.8
 
 var x_pos_array = [
 	-47.901,
@@ -77,17 +79,17 @@ func generate_crops():
 				else:
 					var sorghum_instance = sorghum_scene.instance()
 					add_child(sorghum_instance)
-					
-					sorghum_instance.global_transform.origin.x = x_pos_array[i]
+					randomize()
+					sorghum_instance.global_transform.origin.x = x_pos_array[i] + rand_range(random_range_bottom, random_range_up)
 					sorghum_instance.global_transform.origin.y = crop_y_position
-					sorghum_instance.global_transform.origin.z = z_pos_array[j]
+					sorghum_instance.global_transform.origin.z = z_pos_array[j]	+ rand_range(random_range_bottom, random_range_up)
 			else:
 				var sorghum_instance = sorghum_scene.instance()
 				add_child(sorghum_instance)
-				
-				sorghum_instance.global_transform.origin.x = x_pos_array[i]
+				randomize()
+				sorghum_instance.global_transform.origin.x = x_pos_array[i]	+ rand_range(random_range_bottom, random_range_up)
 				sorghum_instance.global_transform.origin.y = crop_y_position
-				sorghum_instance.global_transform.origin.z = z_pos_array[j]
+				sorghum_instance.global_transform.origin.z = z_pos_array[j]	+ rand_range(random_range_bottom, random_range_up)
 				
 			j += 1
 			
