@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/PauseScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/TransitionOverlay.tscn" type="PackedScene" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://scenes/TzitzimitlScene.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/CropGenerator.gd" type="Script" id=11]
 [ext_resource path="res://scenes/EnvironmentBackScene.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/visual/grain_bin/blend_grain_mil_crops.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://assets/visual/grain_bin/blend_grain_mill.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://scripts/GrainBin.gd" type="Script" id=15]
 
 [sub_resource type="CylinderShape" id=3]
 height = 0.947764
@@ -27,6 +30,8 @@ ambient_light_color = Color( 0.866667, 0.552941, 0.109804, 1 )
 fog_sun_color = Color( 0.678431, 0.603922, 0.45098, 1 )
 fog_sun_amount = 0.46
 dof_blur_far_distance = 75.0
+
+[sub_resource type="BoxShape" id=4]
 
 [node name="GameSceneOne" type="Spatial"]
 script = ExtResource( 3 )
@@ -370,3 +375,18 @@ transform = Transform( 1, 0, 0, 0, 0.771969, 0.635661, 0, -0.635661, 0.771969, 0
 
 [node name="Tzitzimitl" parent="Demon" instance=ExtResource( 10 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4.94171, 76.0688 )
+
+[node name="GrainBin" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -4 )
+script = ExtResource( 15 )
+
+[node name="blend_grain_mil_crops" type="MeshInstance" parent="GrainBin"]
+mesh = ExtResource( 13 )
+skeleton = NodePath("../..")
+
+[node name="blend_grain_mill" type="MeshInstance" parent="GrainBin"]
+mesh = ExtResource( 14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="GrainBin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 4 )
