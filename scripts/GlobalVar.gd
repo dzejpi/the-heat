@@ -9,6 +9,9 @@ var sfx_water_throw = preload("res://assets/sfx/sfx_water_throw.mp3")
 var sfx_water_draw = preload("res://assets/sfx/sfx_water_draw.mp3")
 var sfx_button_confirm = preload("res://assets/sfx/sfx_button_confirm.mp3")
 var sfx_crop_destruction = preload("res://assets/sfx/sfx_crop_destruction.mp3")
+var sfx_crop_harvest = preload("res://assets/sfx/sfx_crop_harvest.mp3")
+var sfx_crop_drop = preload("res://assets/sfx/sfx_crop_drop.mp3")
+var sfx_item_change = preload("res://assets/sfx/sfx_item_change.mp3")
 
 var is_game_over = false
 var is_game_paused = false
@@ -51,6 +54,15 @@ func play_sound(sfx_name):
 			sfx_node.play()
 		"crop_destruction":
 			sfx_node.stream = sfx_crop_destruction
+			sfx_node.play()
+		"crop_harvest":
+			sfx_node.stream = sfx_crop_harvest
+			sfx_node.play()
+		"crop_drop":
+			sfx_node.stream = sfx_crop_destruction
+			sfx_node.play()
+		"item_change":
+			sfx_node.stream = sfx_item_change
 			sfx_node.play()
 
 

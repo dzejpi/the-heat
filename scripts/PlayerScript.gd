@@ -216,6 +216,7 @@ func carried_item_change():
 		
 		# Sickle
 		2:
+			GlobalVar.play_sound("item_change")
 			carry_status_label.text = "Sickle"
 			tooltip_label.text = "Use to harvest crops"
 			selected_item_sprite.texture = selected_item_sickle
@@ -233,6 +234,7 @@ func carried_item_change():
 		
 		# Spade
 		4:
+			GlobalVar.play_sound("item_change")
 			carry_status_label.text = "Spade"
 			tooltip_label.text = "Destroy crops"
 			selected_item_sprite.texture = selected_item_spade
@@ -242,6 +244,7 @@ func carried_item_change():
 			carry_status_label.text = "Crops"
 			tooltip_label.text = "Take crops to the storage"
 			selected_item_sprite.texture = selected_item_crops
+			
 
 
 func process_player_action_on_object(observed_object, raycast_object):
@@ -259,6 +262,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 				if !is_crop_on_fire:
 					var is_crop_harvestable = raycast_object.check_harvestability()
 					if is_crop_harvestable:
+						GlobalVar.play_sound("crop_harvest")
 						raycast_object.harvest_crop()
 						carried_object = 5
 						# Wait for the animation to end
@@ -277,6 +281,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 				some_crop_destroyed = true
 		"GrainBin":
 			if carried_object == 5:
+				GlobalVar.play_sound("crop_drop")
 				raycast_object.load_grain_mill()
 				carried_object = 2
 				speed = 8

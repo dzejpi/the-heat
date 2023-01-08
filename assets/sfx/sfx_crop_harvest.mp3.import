@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sfx_crop_harvest.mp3-d5cc557d60c6e99b00060799ffd36352.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/sfx_crop_harvest.mp3"
+dest_files=[ "res://.import/sfx_crop_harvest.mp3-d5cc557d60c6e99b00060799ffd36352.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
