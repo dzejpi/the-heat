@@ -1,0 +1,222 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/3d/blend_ground.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/visual/crops/ase_crops_sorghum_fresh.png" type="Texture" id=2]
+[ext_resource path="res://assets/visual/amber/ase_amber2.png" type="Texture" id=3]
+[ext_resource path="res://assets/visual/amber/ase_amber3.png" type="Texture" id=4]
+[ext_resource path="res://assets/visual/amber/ase_amber4.png" type="Texture" id=5]
+[ext_resource path="res://assets/visual/amber/ase_amber1.png" type="Texture" id=6]
+[ext_resource path="res://assets/visual/skybox/ase_skybox.png" type="Texture" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 50, 1, 50 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="PanoramaSky" id=3]
+panorama = ExtResource( 7 )
+
+[sub_resource type="Environment" id=4]
+background_mode = 2
+background_sky = SubResource( 3 )
+ambient_light_color = Color( 0.866667, 0.552941, 0.109804, 1 )
+fog_sun_color = Color( 0.678431, 0.603922, 0.45098, 1 )
+fog_sun_amount = 0.46
+dof_blur_far_distance = 75.0
+
+[node name="BackgroundScene" type="StaticBody"]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="blend_ground" type="MeshInstance" parent="."]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Crops" type="Spatial" parent="."]
+transform = Transform( 1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 0, 8.74228e-08, 7.64274e-15, -1, 0, -2, 4.46581 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 1.69407e-21, 0, 0, 1, 0.283198, 0, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite2" type="Sprite3D" parent="Crops"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 3.38813e-21, 0, 0, 1, -0.559268, -1.19209e-07, -1.49896 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 1.69407e-21, 0, 0, 1, 1.21673, 1.19209e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 3.38813e-21, 0, 0, 1, 1.6958, 2.38419e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, -1.69407e-21, 0, 0, 1, -3.73713, -5.96046e-07, 0.263523 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite2" type="Sprite3D" parent="Crops/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 4.23516e-21, 0, 0, 1, -0.559268, -1.19209e-07, -1.49896 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 1.69407e-21, 0, 0, 1, 1.21673, 1.19209e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 3.38813e-21, 0, 0, 1, 1.6958, 2.38419e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2/SorghumSprite/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, 1.69407e-21, 0, 0, 1, -4.33538, -7.15256e-07, 4.76837e-07 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite3" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 1.42109e-14, 6.68151e-22, 1, 3.38813e-21, 0, 0, 1, 0.922471, 2.38419e-07, 2.78799 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2/SorghumSprite3"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, 2.5411e-21, 0, 0, 1, 1.21673, 0, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2/SorghumSprite3/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, 8.47033e-21, 0, 0, 1, -2.69679, -1.19209e-07, 0.830507 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2/SorghumSprite3/SorghumSprite/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68152e-22, 1, 8.47033e-21, 0, 0, 1, -0.421282, 1.19209e-07, -0.540459 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite2" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, 6.77626e-21, 0, 0, 1, -0.559268, 0, 0.680377 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 1.69407e-21, 0, 0, 1, 1.21673, 1.19209e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2/SorghumSprite2/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 3.38813e-21, 0, 0, 1, 1.6958, 2.38419e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite2/SorghumSprite2/SorghumSprite2/SorghumSprite/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68152e-22, 1, 3.38813e-21, 0, 0, 1, -3.47199, -3.57628e-07, 1.43051e-06 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="BurningEmber" type="AnimatedSprite3D" parent="Crops"]
+transform = Transform( 1, 6.6815e-22, 0, 6.6815e-22, 1, 0, 0, 0, 1, 0.286308, -0.872033, -0.774922 )
+billboard = 2
+frames = SubResource( 2 )
+frame = 3
+playing = true
+
+[node name="SorghumSprite3" type="Sprite3D" parent="Crops"]
+transform = Transform( 0.907543, -1.61657e-08, 0.419959, -1.61658e-08, 1, 7.34279e-08, -0.419959, -7.3428e-08, 0.907543, -1.53821, -2.38419e-07, -1.89283 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 1.69407e-21, 0, 0, 1, 1.21673, 1.19209e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 3.38813e-21, 0, 0, 1, 1.6958, 2.38419e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, -1.69407e-21, 0, 0, 1, -3.73713, -5.96046e-07, 0.263523 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite2" type="Sprite3D" parent="Crops/SorghumSprite3"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 4.23516e-21, 0, 0, 1, -0.559268, -1.19209e-07, -1.49896 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 1.69407e-21, 0, 0, 1, 1.21673, 1.19209e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 3.38813e-21, 0, 0, 1, 1.6958, 2.38419e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2/SorghumSprite/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, 1.69407e-21, 0, 0, 1, -4.33538, -7.15256e-07, 4.76837e-07 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite3" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 1.42109e-14, 6.68151e-22, 1, 3.38813e-21, 0, 0, 1, 0.922471, 2.38419e-07, 2.78799 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2/SorghumSprite3"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, 2.5411e-21, 0, 0, 1, 1.21673, 0, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2/SorghumSprite3/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, 6.77626e-21, 0, 0, 1, -2.69679, -1.19209e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2/SorghumSprite3/SorghumSprite/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68152e-22, 1, 8.47033e-21, 0, 0, 1, -0.421282, 1.19209e-07, -0.540459 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite2" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68151e-22, 1, 6.77626e-21, 0, 0, 1, -0.559268, 0, 0.680377 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2/SorghumSprite2"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 1.69407e-21, 0, 0, 1, 1.21673, 1.19209e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2/SorghumSprite2/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.6815e-22, 1, 3.38813e-21, 0, 0, 1, 1.6958, 2.38419e-07, 0 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="SorghumSprite" type="Sprite3D" parent="Crops/SorghumSprite3/SorghumSprite2/SorghumSprite2/SorghumSprite/SorghumSprite"]
+transform = Transform( 1, 6.6815e-22, 7.10543e-15, 6.68152e-22, 1, 3.38813e-21, 0, 0, 1, -3.47199, -3.57628e-07, 1.43051e-06 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.782543, -0.17764, 0.596717, -1.52201e-07, -0.958432, -0.28532, 0.622597, 0.223275, -0.750014, 0.749502, -1.58687, 4.77006 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
