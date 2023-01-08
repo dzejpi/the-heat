@@ -251,6 +251,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 				if is_bucket_empty:
 					is_bucket_empty = false
 					item_animation_player.stop()
+					GlobalVar.play_sound("water_draw")
 					carried_item_change()
 		"Sorghum":
 			if carried_object == 2:
