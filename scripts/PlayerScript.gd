@@ -18,6 +18,8 @@ onready var tutorial_node = $TutorialLabel
 
 onready var selected_item_sprite = $PlayerHead/SelectedItemSprite
 
+onready var animation_player = $PlayerHead/PlayerCamera/AnimationPlayer
+
 # Sprites
 var selected_item_hands = preload("res://assets/visual/items/spr_empty_hands.png")
 var selected_item_sickle = preload("res://assets/visual/items/spr_sickle.png")
@@ -179,6 +181,10 @@ func _physics_process(delta):
 	movement.y = gravity_vector.y
 	
 	move_and_slide(movement, Vector3.UP)
+	
+	if !GlobalVar.is_game_over or !GlobalVar.is_game_paused:
+		if direction != Vector3():
+			animation_player.play("Head Bob")
 	
 
 func carried_item_change():
