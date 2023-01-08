@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sfx_water_draw.mp3-9ca421535079f790946883123f977337.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/sfx_water_draw.mp3"
+dest_files=[ "res://.import/sfx_water_draw.mp3-9ca421535079f790946883123f977337.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

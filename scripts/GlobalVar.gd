@@ -6,7 +6,9 @@ onready var music_node = $MusicPlayer
 
 var sfx_walk = preload("res://assets/sfx/sfx_walk.mp3")
 var sfx_water_throw = preload("res://assets/sfx/sfx_water_throw.mp3")
+var sfx_water_draw = preload("res://assets/sfx/sfx_water_draw.mp3")
 var sfx_button_confirm = preload("res://assets/sfx/sfx_button_confirm.mp3")
+var sfx_crop_destruction = preload("res://assets/sfx/sfx_crop_destruction.mp3")
 
 var is_game_over = false
 var is_game_paused = false
@@ -32,6 +34,7 @@ func _process(delta):
 	if is_game_over:
 		field_amount = 0
 
+
 func play_sound(sfx_name):
 	match(sfx_name):
 		"walk":
@@ -40,9 +43,16 @@ func play_sound(sfx_name):
 		"water_throw":
 			sfx_node.stream = sfx_water_throw
 			sfx_node.play()
+		"water_draw":
+			sfx_node.stream = sfx_water_draw
+			sfx_node.play()
 		"button_confirm":
 			sfx_node.stream = sfx_button_confirm
 			sfx_node.play()
+		"crop_destruction":
+			sfx_node.stream = sfx_crop_destruction
+			sfx_node.play()
+
 
 func stop_sound(sfx_name):
 	match(sfx_name):

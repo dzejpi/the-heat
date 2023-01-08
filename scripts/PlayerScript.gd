@@ -271,6 +271,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 					is_bucket_empty = true
 					selected_item_sprite.texture = selected_item_bucket_empty
 			if carried_object == 4:
+				GlobalVar.play_sound("crop_destruction")
 				raycast_object.destroy_crop()
 				some_crop_destroyed = true
 		"GrainBin":

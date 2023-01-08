@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sfx_crop_destruction.mp3-63b53916f963dc09dfd46d568915bc6b.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/sfx_crop_destruction.mp3"
+dest_files=[ "res://.import/sfx_crop_destruction.mp3-63b53916f963dc09dfd46d568915bc6b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
