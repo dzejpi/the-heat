@@ -144,8 +144,9 @@ func destroy_crop():
 	plant_fire_sprite.hide()
 	
 	if !is_burned:
-		GlobalVar.field_amount -= 1
-		GlobalVar.fields_on_fire -= 1
+		if !is_harvested:
+			GlobalVar.field_amount -= 1
+			GlobalVar.fields_on_fire -= 1
 	is_burned = true
 
 
