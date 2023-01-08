@@ -27,7 +27,8 @@ panorama = ExtResource( 6 )
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 6 )
-ambient_light_color = Color( 0.866667, 0.552941, 0.109804, 1 )
+background_energy = 1.1
+ambient_light_color = Color( 1, 0.917647, 0.796078, 1 )
 fog_sun_color = Color( 0.678431, 0.603922, 0.45098, 1 )
 fog_sun_amount = 0.46
 dof_blur_far_distance = 75.0
@@ -359,6 +360,7 @@ transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708
 
 [node name="Demon" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.771969, 0.635661, 0, -0.635661, 0.771969, 0, 34.5024, 0 )
+visible = false
 
 [node name="Tzitzimitl" parent="Demon" instance=ExtResource( 10 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4.94171, 76.0688 )
