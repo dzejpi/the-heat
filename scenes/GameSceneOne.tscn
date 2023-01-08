@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/PauseScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/TransitionOverlay.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/visual/grain_bin/blend_grain_mill.obj" type="ArrayMesh" id=14]
 [ext_resource path="res://scripts/GrainBin.gd" type="Script" id=15]
 [ext_resource path="res://assets/visual/grain_bin/blend_farm_house.obj" type="ArrayMesh" id=16]
+[ext_resource path="res://scripts/DemonScript.gd" type="Script" id=17]
 
 [sub_resource type="CylinderShape" id=3]
 height = 0.947764
@@ -32,6 +33,89 @@ ambient_light_color = Color( 1, 0.917647, 0.796078, 1 )
 fog_sun_color = Color( 0.678431, 0.603922, 0.45098, 1 )
 fog_sun_amount = 0.46
 dof_blur_far_distance = 75.0
+
+[sub_resource type="Animation" id=7]
+resource_name = "Demon Appearing"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tzitzimitl:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.95094 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 32.6594, -11.569, -1.77098 ), Vector3( 7.96703, -12.6723, 29.1258 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tzitzimitl:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.935907, 1.95825 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -4.40379, 21.4449, 27.1931 ), Vector3( -8.0127, 19.3232, 28.2819 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "DemonFlying"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tzitzimitl:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0146138, 3.45305, 3.87789, 4.71088, 7.81453, 8.88201, 14.7806, 15.489, 19.1744, 19.6812, 19.7318 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 7.967, -12.672, 29.126 ), Vector3( -8.027, -93.2978, -38.8368 ), Vector3( -8.027, -93.2978, -38.8368 ), Vector3( -44.6381, -95.7508, 14.154 ), Vector3( -64.771, -116.557, 34.5943 ), Vector3( -57.4838, 153.849, 14.8448 ), Vector3( -35.467, 58.9931, 42.7032 ), Vector3( -35.467, 58.9931, 42.7032 ), Vector3( 7.967, -12.672, 29.126 ), Vector3( 7.967, -12.672, 29.126 ), Vector3( 7.967, -12.672, 29.126 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tzitzimitl:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0146138, 3.45305, 3.87789, 8.76103, 9.44057, 14.7806, 15.1605, 15.4744, 19.1791, 19.6859, 19.7318 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -8.013, 19.323, 28.282 ), Vector3( -58.684, 69.2914, -33.2987 ), Vector3( -58.684, 69.2914, -33.2987 ), Vector3( 8.4157, 108.74, -53.5423 ), Vector3( 8.4157, 108.74, -53.5423 ), Vector3( 49.0874, 61.8978, -10.0149 ), Vector3( 49.0874, 61.8978, -10.0149 ), Vector3( 49.0874, 61.8978, -10.0149 ), Vector3( -8.013, 19.323, 28.282 ), Vector3( -8.013, 19.323, 28.282 ), Vector3( -8.013, 19.323, 28.282 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tzitzimitl:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 32.6594, -11.569, -1.77098 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tzitzimitl:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
 [sub_resource type="BoxShape" id=4]
 
@@ -359,11 +443,16 @@ transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708
 transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708, 0, -47.421 )
 
 [node name="Demon" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.771969, 0.635661, 0, -0.635661, 0.771969, 0, 34.5024, 0 )
-visible = false
+transform = Transform( 0.8343, 0.490499, -0.251704, -0.126145, 0.614282, 0.778939, 0.536685, -0.618117, 0.57437, -32.6649, -5.11133, 57.3281 )
+script = ExtResource( 17 )
 
 [node name="Tzitzimitl" parent="Demon" instance=ExtResource( 10 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 4.94171, 76.0688 )
+transform = Transform( 3.93027, -0.311586, -0.675364, -0.104074, 3.36599, -2.15859, 0.736458, 2.13852, 3.29918, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Demon"]
+"anims/Demon Appearing" = SubResource( 7 )
+anims/DemonFlying = SubResource( 9 )
+anims/RESET = SubResource( 8 )
 
 [node name="GrainBin" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -4 )
