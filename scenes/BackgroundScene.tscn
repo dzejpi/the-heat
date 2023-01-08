@@ -129,10 +129,9 @@ billboard = 2
 texture = ExtResource( 2 )
 
 [node name="BurningEmber" type="AnimatedSprite3D" parent="Crops"]
-transform = Transform( 1, 6.6815e-22, 0, 6.6815e-22, 1, 0, 0, 0, 1, 0.286308, -0.872033, -0.774922 )
+transform = Transform( 1, 6.6815e-22, 0, 6.6815e-22, 1, 0, 0, 0, 1, 0.694046, -0.872033, -1.05308 )
 billboard = 2
 frames = SubResource( 2 )
-frame = 3
 playing = true
 
 [node name="SorghumSprite3" type="Sprite3D" parent="Crops"]
