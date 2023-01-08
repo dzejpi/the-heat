@@ -22,3 +22,6 @@ func _process(delta):
 		timer_countdown -= (1 * delta)
 	elif field_amount < 20:
 		is_game_over = true
+		
+	if is_game_over:
+		field_amount = 0

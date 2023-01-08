@@ -137,6 +137,8 @@ func _process(delta):
 		process_object_prompt(observed_object, "")
 		crop_health_label.text = ""
 		crop_status_label.text = ""
+		
+	toggle_labels()
 
 func _physics_process(delta):
 	
@@ -301,3 +303,23 @@ func update_moving_speed():
 		speed = 0
 	else:
 		speed = 8
+
+
+func toggle_labels():
+		# Stop displaying if game is paused or over
+	if GlobalVar.is_game_paused or GlobalVar.is_game_over:
+		fields_left_label.hide()
+		crop_status_label.hide()
+		crop_health_label.hide()
+		carry_status_label.hide()
+		tooltip_label.hide()
+		prompt_label.hide()
+		fields_left_label.hide()
+	else:
+		fields_left_label.show()
+		crop_status_label.show()
+		crop_health_label.show()
+		carry_status_label.show()
+		tooltip_label.show()
+		prompt_label.show()
+		fields_left_label.show()
