@@ -1,13 +1,14 @@
 extends Node2D
 
 
-var is_game_over = true
+var is_game_over = false
 
 onready var crops_harvested_label = $StatusLabels/CropsHarvestedLabel
 onready var days_left_label = $StatusLabels/DaysLeftLabel
 
 
 func _ready():
+	is_game_over = false
 	update_game_over_state()
 
 

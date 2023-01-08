@@ -62,58 +62,60 @@ func _ready():
 
 
 func _input(event):
-	if !GlobalVar.is_game_paused && !GlobalVar.is_game_over:
-		if event is InputEventMouseMotion:
-			rotation_degrees.y -= event.relative.x * mouse_sensitivity / 10
-			player_head.rotation_degrees.x = clamp(player_head.rotation_degrees.x - event.relative.y * mouse_sensitivity / 10, -90, 90)
+	if !GlobalVar.is_game_over:
+		if !GlobalVar.is_game_paused:
+			if event is InputEventMouseMotion:
+				rotation_degrees.y -= event.relative.x * mouse_sensitivity / 10
+				player_head.rotation_degrees.x = clamp(player_head.rotation_degrees.x - event.relative.y * mouse_sensitivity / 10, -90, 90)
 
-		direction = Vector3()
-		direction.z = -Input.get_action_strength("move_up") + Input.get_action_strength("move_down")
-		direction.x = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
-		direction = direction.normalized().rotated(Vector3.UP, rotation.y)
-	
-		if carried_object != 5:
-			if Input.is_action_just_pressed("item_1"):
-				carried_object = 1
-				carried_item_change()
-			if Input.is_action_just_pressed("item_2"):
-				carried_object = 2
-				carried_item_change()
-			if Input.is_action_just_pressed("item_3"):
-				carried_object = 3
-				carried_item_change()
-			if Input.is_action_just_pressed("item_4"):
-				carried_object = 4
-				carried_item_change()
-			if Input.is_action_just_pressed("item_change_up"):
-				if carried_object < 4:
-					carried_object += 1
-				else:
+			direction = Vector3()
+			direction.z = -Input.get_action_strength("move_up") + Input.get_action_strength("move_down")
+			direction.x = -Input.get_action_strength("move_left") + Input.get_action_strength("move_right")
+			direction = direction.normalized().rotated(Vector3.UP, rotation.y)
+		
+			if carried_object != 5:
+				if Input.is_action_just_pressed("item_1"):
 					carried_object = 1
-				carried_item_change()
-			if Input.is_action_just_pressed("item_change_down"):
-				if carried_object > 1:
-					carried_object -= 1
-				else:
+					carried_item_change()
+				if Input.is_action_just_pressed("item_2"):
+					carried_object = 2
+					carried_item_change()
+				if Input.is_action_just_pressed("item_3"):
+					carried_object = 3
+					carried_item_change()
+				if Input.is_action_just_pressed("item_4"):
 					carried_object = 4
-				carried_item_change()
-	
-	# Handling the options menu
-	if Input.is_action_just_pressed("ui_cancel"):
-		if !GlobalVar.is_game_over:
-			if !GlobalVar.is_game_paused:
-				GlobalVar.is_game_paused = true
-			else:
-				GlobalVar.is_game_paused = false
-			
-	if Input.is_action_just_pressed("game_action"):
-		process_player_action_on_object(observed_object, ray.get_collider())
+					carried_item_change()
+				if Input.is_action_just_pressed("item_change_up"):
+					if carried_object < 4:
+						carried_object += 1
+					else:
+						carried_object = 1
+					carried_item_change()
+				if Input.is_action_just_pressed("item_change_down"):
+					if carried_object > 1:
+						carried_object -= 1
+					else:
+						carried_object = 4
+					carried_item_change()
+		
+		# Handling the options menu
+		if Input.is_action_just_pressed("ui_cancel"):
+			if !GlobalVar.is_game_over:
+				if !GlobalVar.is_game_paused:
+					GlobalVar.is_game_paused = true
+				else:
+					GlobalVar.is_game_paused = false
+				
+		if Input.is_action_just_pressed("game_action"):
+			process_player_action_on_object(observed_object, ray.get_collider())
 
 
 func _process(delta):
 	# Check whether the game is paused and show/hide cursor
 	manage_mouse_focus()
 	update_field_count()
+	update_moving_speed()
 	
 	# If player is looking at something
 	if ray.is_colliding():
@@ -292,3 +294,10 @@ func manage_mouse_focus():
 
 func update_field_count():
 	fields_left_label.text = "Fields left: " + String(GlobalVar.field_amount)
+
+
+func update_moving_speed():
+	if GlobalVar.is_game_paused or GlobalVar.is_game_over:
+		speed = 0
+	else:
+		speed = 8
