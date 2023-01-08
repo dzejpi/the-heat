@@ -83,15 +83,15 @@ text = "Take water"
 position = Vector2( 32, 32 )
 
 [node name="CropsLeftBackgroundSprite" type="Sprite" parent="UILabels/TopLabels"]
-position = Vector2( 139, 16 )
-scale = Vector2( 1.21094, 1 )
+position = Vector2( 190, 16 )
+scale = Vector2( 1.60937, 1 )
 texture = ExtResource( 4 )
 
 [node name="CropsLeftLabel" type="Label" parent="UILabels/TopLabels"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 2 )
-text = "Fields left:"
+text = "Stacks collected: 100"
 
 [node name="TutorialLabel" type="Node2D" parent="."]
 position = Vector2( 1174, 716 )

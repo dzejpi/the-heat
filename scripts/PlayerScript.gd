@@ -247,6 +247,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 			if carried_object == 5:
 				raycast_object.load_grain_mill()
 				carried_object = 2
+				speed = 8
 				carried_item_change()
 				
 
@@ -306,12 +307,14 @@ func manage_mouse_focus():
 
 
 func update_field_count():
-	fields_left_label.text = "Fields left: " + String(GlobalVar.field_amount)
+	fields_left_label.text = "Stacks collected: " + String(GlobalVar.collected_grains)
 
 
 func update_moving_speed():
 	if GlobalVar.is_game_paused or GlobalVar.is_game_over:
 		speed = 0
+	elif carried_object == 5:
+		speed = 4
 	else:
 		speed = 8
 
