@@ -25,6 +25,7 @@ func _process(delta):
 			move_and_slide(velocity)
 			self.global_transform.origin.y -= (0.25 * delta)
 	else:
+		self.global_transform.origin.y -= (0.25 * delta)
 		if fire_out_timer > 0:
 			fire_out_timer -= (1 * delta)
 		else:
