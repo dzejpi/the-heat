@@ -12,6 +12,8 @@ onready var plant_sprite = $SorghumPlantSprite
 onready var plant_fire_sprite = $SorghumFireSprite
 onready var destroyed_ground = $DestroyedGround
 
+onready var sorg_audio_player = $SorghumAudioStreamPlayer
+
 onready var amber_scene = preload("res://scenes/AmberScene.tscn")
 
 var healthy_plant_sprite = preload("res://assets/visual/crops/ase_crops_sorghum_fresh.png")
@@ -23,6 +25,8 @@ var crop_counted = false
 var current_status = "healthy"
 var amber_timeout = 2
 var amber_current_timeout = amber_timeout
+
+var is_audio_playing = false
 
 
 func _ready():
@@ -43,6 +47,10 @@ func _process(delta):
 
 func manage_fire(delta):
 	if is_burning:
+		if !is_audio_playing:
+			is_audio_playing = true
+			sorg_audio_player.play()
+		
 		health -= (burn_rate * delta)
 		
 		if health < 50:
@@ -58,6 +66,7 @@ func manage_fire(delta):
 				GlobalVar.field_amount -= 1
 				GlobalVar.fields_on_fire -= 1
 			is_burned = true
+			sorg_audio_player.stop()
 			is_burning = false
 			
 			print("Fields left: " + String(GlobalVar.field_amount))
@@ -115,6 +124,7 @@ func get_crop_status():
 func extinguish_fire():
 	if is_burning:
 		GlobalVar.fields_on_fire -= 1
+		sorg_audio_player.stop()
 	is_burning = false
 	change_fire_animation()
 
@@ -147,6 +157,7 @@ func destroy_crop():
 		if !is_harvested:
 			GlobalVar.field_amount -= 1
 			GlobalVar.fields_on_fire -= 1
+			sorg_audio_player.stop()
 	is_burned = true
 
 
