@@ -27,12 +27,18 @@ position = Vector2( 256, 240 )
 [node name="GameName" type="Node2D" parent="MenuButtons"]
 position = Vector2( -128, -160 )
 
+[node name="Sprite" type="Sprite" parent="MenuButtons/GameName"]
+position = Vector2( 372, 56 )
+scale = Vector2( 2.90625, 2.5 )
+texture = ExtResource( 5 )
+
 [node name="GameLabel" type="Label" parent="MenuButtons/GameName"]
-margin_left = 32.0
-margin_right = 709.0
+margin_left = 25.0
+margin_right = 712.0
 margin_bottom = 121.0
 custom_fonts/font = SubResource( 1 )
 text = "THE HEAT"
+align = 1
 
 [node name="NewGameButton" type="TextureButton" parent="MenuButtons"]
 margin_right = 484.0
