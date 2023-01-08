@@ -20,5 +20,5 @@ func _ready():
 func _process(delta):
 	if timer_countdown > 0:
 		timer_countdown -= (1 * delta)
-	elif field_amount < 520:
+	elif field_amount < 20:
 		is_game_over = true
