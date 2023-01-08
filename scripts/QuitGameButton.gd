@@ -23,4 +23,5 @@ func _process(delta):
 			get_tree().quit()
 
 func _on_QuitGameButton_pressed():
+	GlobalVar.play_sound("button_confirm")
 	button_pressed = true

@@ -20,4 +20,5 @@ func _process(delta):
 
 
 func _on_CreditsButton_pressed():
+	GlobalVar.play_sound("button_confirm")
 	button_pressed = true

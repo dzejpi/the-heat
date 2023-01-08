@@ -33,10 +33,12 @@ func _on_MusicButton_pressed():
 		music_label.text = "Music: Off"
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true)
 		self.pressed = false
+		GlobalVar.play_sound("button_confirm")
 		release_focus()
 	else:
 		music_on = true
 		music_label.text = "Music: On"
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false)
 		self.pressed = true
+		GlobalVar.play_sound("button_confirm")
 		release_focus()
