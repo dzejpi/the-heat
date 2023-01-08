@@ -48,3 +48,18 @@ Try to save as many crops as you can. The end is near.
 This was my first 3D LD game! I was playing around with 3D for quite some time, but this LD was time to put my knowledge to test. All of my lucky stars had to be aligned properly, because I actually haven't run into any major issues. I learned so many things; more than last few months combined. This was the most fun LD I have had so far.
 
 And since last December, I have a Windows desktop, which means that I am no longer stuck on rating HTML5, so there is not going to be any big delay rating your Windows games as well!
+
+
+### Curiosities
+I think you could get a laugh by how I made some of the sounds, all of them were recorded on my phone (iPhone SE 2020):
+
+* Button confirm sound - me tapping key on my keyboard
+* Water throw - me throwing a cup of water into the kitchen sink
+* Crop destruction - rummaging through the hay left over by my bunny on the floor
+* Crop harvest - taking the hay off the ground
+* Crop drop - taking the hay and dropping it on the floor next to the phone
+* Fire - actual fire, but from the candle, and super heavily amplified
+* Item change - taking wallet out of my jeans
+* Walk - actual walk
+
+Of course, all sounds heavily edited in Audacity. :)
