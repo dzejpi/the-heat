@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/PlayerScript.gd" type="Script" id=1]
 [ext_resource path="res://resources/font_ingame_24.tres" type="DynamicFont" id=2]
@@ -37,6 +37,61 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Item Use"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.297646 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, -0.463007, -0.318833 ), Vector3( 0.5, -0.463007, -0.318833 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0864183, 0.186496, 0.296968 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -63.4984, 3.18848, -1.71195 ), Vector3( -63.498, -34.823, -1.712 ), Vector3( -63.4984, 38.6395, -1.71195 ), Vector3( -63.4984, 3.18848, -1.71195 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, -0.463007, -0.318833 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -63.4984, 3.18848, -1.71195 ) ]
+}
+
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 
@@ -63,6 +118,10 @@ transform = Transform( 0.999493, -0.0199255, 0.0248193, -0.0133308, 0.446024, 0.
 centered = false
 offset = Vector2( -64, 0 )
 texture = ExtResource( 3 )
+
+[node name="ItemAnimationPlayer" type="AnimationPlayer" parent="PlayerHead/SelectedItemSprite"]
+"anims/Item Use" = SubResource( 4 )
+anims/RESET = SubResource( 5 )
 
 [node name="CollisionBodyCapsule" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

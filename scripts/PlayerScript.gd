@@ -19,6 +19,7 @@ onready var tutorial_node = $TutorialLabel
 onready var selected_item_sprite = $PlayerHead/SelectedItemSprite
 
 onready var animation_player = $PlayerHead/PlayerCamera/AnimationPlayer
+onready var item_animation_player = $PlayerHead/SelectedItemSprite/ItemAnimationPlayer
 
 # Sprites
 var selected_item_hands = preload("res://assets/visual/items/spr_empty_hands.png")
@@ -115,6 +116,7 @@ func _input(event):
 					GlobalVar.is_game_paused = false
 				
 		if Input.is_action_just_pressed("game_action"):
+			item_animation_player.play("Item Use")
 			process_player_action_on_object(observed_object, ray.get_collider())
 
 
@@ -254,6 +256,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 				raycast_object.load_grain_mill()
 				carried_object = 2
 				speed = 8
+				
 				carried_item_change()
 				
 
