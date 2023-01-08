@@ -233,7 +233,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 		"GrainBin":
 			if carried_object == 5:
 				raycast_object.load_grain_mill()
-				carried_object = 1
+				carried_object = 2
 				carried_item_change()
 				
 
