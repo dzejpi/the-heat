@@ -15,6 +15,8 @@ var sfx_crop_drop = preload("res://assets/sfx/sfx_crop_drop.mp3")
 var sfx_item_change = preload("res://assets/sfx/sfx_item_change.mp3")
 var sfx_fire = preload("res://assets/sfx/sfx_fire.mp3")
 
+var music_main_music = preload("res://assets/music/music_main_music.mp3")
+
 var is_game_over = false
 var is_game_paused = false
 
@@ -38,6 +40,15 @@ func _process(delta):
 		
 	if is_game_over:
 		field_amount = 0
+		
+
+func play_music():
+	music_node.stream = music_main_music
+	music_node.play()
+	
+
+func stop_music():
+	music_node.stop()
 
 
 func play_sound(sfx_name):

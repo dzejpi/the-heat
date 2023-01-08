@@ -29,4 +29,5 @@ func _process(delta):
 
 func _on_NewGameButton_pressed():
 	GlobalVar.play_sound("button_confirm")
+	GlobalVar.play_music()
 	button_pressed = true
