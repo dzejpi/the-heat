@@ -21,6 +21,8 @@ onready var selected_item_sprite = $PlayerHead/SelectedItemSprite
 onready var animation_player = $PlayerHead/PlayerCamera/AnimationPlayer
 onready var item_animation_player = $PlayerHead/SelectedItemSprite/ItemAnimationPlayer
 
+onready var player_timer = $PlayerTimer
+
 # Sprites
 var selected_item_hands = preload("res://assets/visual/items/spr_empty_hands.png")
 var selected_item_sickle = preload("res://assets/visual/items/spr_sickle.png")
@@ -233,6 +235,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 			if carried_object == 3:
 				if is_bucket_empty:
 					is_bucket_empty = false
+					item_animation_player.stop()
 					carried_item_change()
 		"Sorghum":
 			if carried_object == 2:
@@ -242,6 +245,9 @@ func process_player_action_on_object(observed_object, raycast_object):
 					if is_crop_harvestable:
 						raycast_object.harvest_crop()
 						carried_object = 5
+						# Wait for the animation to end
+						player_timer.start()
+						yield(player_timer, "timeout")
 						carried_item_change()
 			if carried_object == 3:
 				if !is_bucket_empty:
@@ -256,7 +262,9 @@ func process_player_action_on_object(observed_object, raycast_object):
 				raycast_object.load_grain_mill()
 				carried_object = 2
 				speed = 8
-				
+				# Wait for the animation to end
+				player_timer.start()
+				yield(player_timer, "timeout")
 				carried_item_change()
 				
 

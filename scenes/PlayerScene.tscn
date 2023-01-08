@@ -203,3 +203,6 @@ custom_fonts/font = ExtResource( 2 )
 text = "Select sickle with 2 or MMB scroll"
 align = 1
 valign = 1
+
+[node name="PlayerTimer" type="Timer" parent="."]
+wait_time = 0.2
