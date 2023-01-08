@@ -21,12 +21,12 @@
 height = 0.947764
 radius = 0.791606
 
-[sub_resource type="PanoramaSky" id=1]
+[sub_resource type="PanoramaSky" id=6]
 panorama = ExtResource( 6 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 1 )
+background_sky = SubResource( 6 )
 ambient_light_color = Color( 0.866667, 0.552941, 0.109804, 1 )
 fog_sun_color = Color( 0.678431, 0.603922, 0.45098, 1 )
 fog_sun_amount = 0.46
