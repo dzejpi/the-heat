@@ -59,6 +59,9 @@ var carried_object = 1
 var tutorial_step = 1
 var some_crop_destroyed = false
 
+var is_walking = false
+var is_walking_being_played = false
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -108,6 +111,18 @@ func _input(event):
 					else:
 						carried_object = 4
 					carried_item_change()
+					
+			if Input.is_action_pressed("move_up"):
+				if !is_walking:
+					is_walking = true
+					if !is_walking_being_played:
+						is_walking_being_played = true
+						GlobalVar.play_sound("walk")
+			else:
+				is_walking = false
+				if is_walking_being_played:
+					is_walking_being_played = false
+					GlobalVar.stop_sound("walk")
 		
 		# Handling the options menu
 		if Input.is_action_just_pressed("ui_cancel"):
@@ -142,13 +157,13 @@ func _process(delta):
 			observed_object = collision_object
 			if "Sorg" in observed_object:
 				observed_object = "Sorghum"
-			print("Player is looking at: " + observed_object + ".")
+			#print("Player is looking at: " + observed_object + ".")
 			process_object_prompt(observed_object, watched_object)
 	else:
 		var collision_object = "nothing"
 		if collision_object != observed_object:
 			observed_object = collision_object
-			print("Player is looking at: nothing.")
+			#print("Player is looking at: nothing.")
 			prompt_label.text = ""	
 		process_object_prompt(observed_object, "")
 		crop_health_label.text = ""
@@ -252,6 +267,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 			if carried_object == 3:
 				if !is_bucket_empty:
 					raycast_object.extinguish_fire()
+					GlobalVar.play_sound("water_throw")
 					is_bucket_empty = true
 					selected_item_sprite.texture = selected_item_bucket_empty
 			if carried_object == 4:

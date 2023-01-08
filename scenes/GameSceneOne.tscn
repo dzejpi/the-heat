@@ -447,7 +447,7 @@ transform = Transform( 0.8343, 0.490499, -0.251704, -0.126145, 0.614282, 0.77893
 script = ExtResource( 17 )
 
 [node name="Tzitzimitl" parent="Demon" instance=ExtResource( 10 )]
-transform = Transform( 3.93028, -0.311586, -0.675365, -0.104074, 3.36599, -2.1586, 0.736459, 2.13852, 3.29919, 0, 0, 0 )
+transform = Transform( 3.93028, -0.311587, -0.675367, -0.104074, 3.36599, -2.1586, 0.736461, 2.13852, 3.29919, 0, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Demon"]
 "anims/Demon Appearing" = SubResource( 7 )

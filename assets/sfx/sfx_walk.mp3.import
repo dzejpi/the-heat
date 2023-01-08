@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sfx_walk.mp3-be4ad185b0a8a57817e2b3605f38c0d4.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/sfx_walk.mp3"
+dest_files=[ "res://.import/sfx_walk.mp3-be4ad185b0a8a57817e2b3605f38c0d4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

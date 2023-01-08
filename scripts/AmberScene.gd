@@ -33,7 +33,7 @@ func _process(delta):
 
 
 func _on_Area_area_entered(area):
-	print("Ember entered: " + String(area.name))
+	#print("Ember entered: " + String(area.name))
 	
 	if !is_start_area_set:
 		start_area = area
