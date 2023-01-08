@@ -72,10 +72,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.0146138, 3.45305, 3.87789, 4.71088, 7.81453, 8.88201, 14.7806, 15.489, 19.1744, 19.6812, 19.7318 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.0146138, 3.45305, 3.87789, 4.71088, 7.80825, 8.14382, 9.02219, 14.7806, 15.489, 19.1744, 19.6812, 19.7318 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 7.967, -12.672, 29.126 ), Vector3( -8.027, -93.2978, -38.8368 ), Vector3( -8.027, -93.2978, -38.8368 ), Vector3( -44.6381, -95.7508, 14.154 ), Vector3( -64.771, -116.557, 34.5943 ), Vector3( -57.4838, 153.849, 14.8448 ), Vector3( -35.467, 58.9931, 42.7032 ), Vector3( -35.467, 58.9931, 42.7032 ), Vector3( 7.967, -12.672, 29.126 ), Vector3( 7.967, -12.672, 29.126 ), Vector3( 7.967, -12.672, 29.126 ) ]
+"values": [ Vector3( 7.967, -12.672, 29.126 ), Vector3( -8.027, -93.2978, -38.8368 ), Vector3( -8.027, -93.2978, -38.8368 ), Vector3( -44.6381, -95.7508, 14.154 ), Vector3( -64.771, -116.557, 34.5943 ), Vector3( 7.58547, 28.9991, -54.2119 ), Vector3( 55.1158, 6.58008, 3.01994 ), Vector3( -35.467, 58.9931, 42.7032 ), Vector3( -35.467, 58.9931, 42.7032 ), Vector3( 7.967, -12.672, 29.126 ), Vector3( 7.967, -12.672, 29.126 ), Vector3( 7.967, -12.672, 29.126 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Tzitzimitl:translation")
@@ -443,11 +443,11 @@ transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708
 transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 49.9708, 0, -47.421 )
 
 [node name="Demon" type="Spatial" parent="."]
-transform = Transform( 0.8343, 0.490499, -0.251704, -0.126145, 0.614282, 0.778939, 0.536685, -0.618117, 0.57437, -32.6649, -5.11133, 57.3281 )
+transform = Transform( 0.8343, 0.490499, -0.251704, -0.126145, 0.614282, 0.778939, 0.536685, -0.618117, 0.57437, -32.6649, 2.45899, 57.3281 )
 script = ExtResource( 17 )
 
 [node name="Tzitzimitl" parent="Demon" instance=ExtResource( 10 )]
-transform = Transform( 3.93027, -0.311586, -0.675364, -0.104074, 3.36599, -2.15859, 0.736458, 2.13852, 3.29918, 0, 0, 0 )
+transform = Transform( 3.93028, -0.311586, -0.675365, -0.104074, 3.36599, -2.1586, 0.736459, 2.13852, 3.29919, 0, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Demon"]
 "anims/Demon Appearing" = SubResource( 7 )

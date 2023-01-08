@@ -8,7 +8,7 @@ var demon_flying = false
 
 
 func _ready():
-	pass
+	hide()
 
 
 func _process(delta):
@@ -16,6 +16,7 @@ func _process(delta):
 		if GlobalVar.field_amount < 250:
 			demon_appeared = true
 			animation_player.play("Demon Appearing")
+			show()
 	
 	if !demon_flying:
 		if GlobalVar.field_amount < 200:
