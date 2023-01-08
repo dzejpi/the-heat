@@ -5,25 +5,22 @@
 [ext_resource path="res://assets/visual/ui/logos/logo-jam.png" type="Texture" id=3]
 [ext_resource path="res://scenes/TransitionOverlay.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/BackgroundScene.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/visual/ui/main_menu/menu_btn_pressed.png" type="Texture" id=6]
+[ext_resource path="res://assets/visual/ui/logos/logo_background.png" type="Texture" id=6]
 
 [node name="SplashScene" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="SplashSceneBackground" type="Sprite" parent="."]
-position = Vector2( 32, 32 )
-scale = Vector2( 6, 13.0469 )
+[node name="BackgroundSplash" type="Sprite" parent="."]
+visible = false
+position = Vector2( 800, 448 )
+scale = Vector2( 5.25, 10 )
 texture = ExtResource( 6 )
-centered = false
 
 [node name="DevLogoSprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="JamLogoSprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
-
-[node name="BackgroundSprite" type="Sprite" parent="."]
-centered = false
 
 [node name="TransitionOverlay" parent="." instance=ExtResource( 4 )]
 

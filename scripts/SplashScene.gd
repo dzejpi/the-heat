@@ -5,8 +5,8 @@ onready var dev_logo_sprite = $DevLogoSprite
 onready var jam_logo_sprite = $JamLogoSprite
 onready var transition_overlay_sprite = $TransitionOverlay/TransitionSprite
 
-var screen_width = OS.window_size.x
-var screen_height = OS.window_size.y
+var screen_width = 1600
+var screen_height = 900
 
 # Logos displayed
 var logos_displayed = 0
@@ -29,6 +29,7 @@ var skip_splash = false
 
 func _ready():
 	# Set the sprite into the center according to the window size
+	
 	dev_logo_sprite.position.x = (screen_width / 2)
 	dev_logo_sprite.position.y = (screen_height / 2)
 	# Opacity
@@ -36,6 +37,8 @@ func _ready():
 	
 	jam_logo_sprite.position.x = (screen_width / 2)
 	jam_logo_sprite.position.y = (screen_height / 2)
+	
+
 	# Opacity
 	jam_logo_sprite.modulate.a = 0
 	
@@ -46,8 +49,8 @@ func _ready():
 func _process(delta):
 	
 	# Make sure that the logo positions rerender in case user changes the window size on splash
-	screen_width = OS.window_size.x
-	screen_height = OS.window_size.y
+	screen_width = 1600
+	screen_height = 900
 	
 	dev_logo_sprite.position.x = (screen_width / 2)
 	dev_logo_sprite.position.y = (screen_height / 2)
