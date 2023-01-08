@@ -10,3 +10,6 @@ bus = "Sound"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 bus = "Music"
+
+[node name="SfxFirePlayer" type="AudioStreamPlayer2D" parent="."]
+bus = "Sound"

@@ -3,6 +3,7 @@ extends Node
 
 onready var sfx_node = $SfxPlayer
 onready var music_node = $MusicPlayer
+onready var sfx_fire_node = $SfxFirePlayer
 
 var sfx_walk = preload("res://assets/sfx/sfx_walk.mp3")
 var sfx_water_throw = preload("res://assets/sfx/sfx_water_throw.mp3")
@@ -12,6 +13,7 @@ var sfx_crop_destruction = preload("res://assets/sfx/sfx_crop_destruction.mp3")
 var sfx_crop_harvest = preload("res://assets/sfx/sfx_crop_harvest.mp3")
 var sfx_crop_drop = preload("res://assets/sfx/sfx_crop_drop.mp3")
 var sfx_item_change = preload("res://assets/sfx/sfx_item_change.mp3")
+var sfx_fire = preload("res://assets/sfx/sfx_fire.mp3")
 
 var is_game_over = false
 var is_game_paused = false
@@ -64,6 +66,9 @@ func play_sound(sfx_name):
 		"item_change":
 			sfx_node.stream = sfx_item_change
 			sfx_node.play()
+		"fire":
+			sfx_fire_node.stream = sfx_fire
+			sfx_fire_node.play()
 
 
 func stop_sound(sfx_name):
