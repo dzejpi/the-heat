@@ -21,6 +21,12 @@ font_data = ExtResource( 12 )
 position = Vector2( 428, 360 )
 script = ExtResource( 9 )
 
+[node name="PauseBackground" type="Sprite" parent="."]
+position = Vector2( -519, -240 )
+scale = Vector2( 6, 13.0469 )
+texture = ExtResource( 2 )
+centered = false
+
 [node name="ContinueGameButton" type="TextureButton" parent="."]
 margin_right = 484.0
 margin_bottom = 84.0
