@@ -13,6 +13,9 @@ onready var tooltip_label = $UILabels/SelectedTools/TooltipLabel
 onready var prompt_label = $UILabels/ActionLabel
 onready var fields_left_label = $UILabels/TopLabels/CropsLeftLabel
 
+onready var tutorial_label = $TutorialLabel/TutorialLabel
+onready var tutorial_node = $TutorialLabel
+
 onready var selected_item_sprite = $PlayerHead/SelectedItemSprite
 
 # Sprites
@@ -48,6 +51,8 @@ var observed_object = ""
 var is_carrying_crops = false
 var is_bucket_empty = true
 var carried_object = 1
+var tutorial_step = 1
+var some_crop_destroyed = false
 
 
 func _ready():
@@ -116,6 +121,11 @@ func _process(delta):
 	manage_mouse_focus()
 	update_field_count()
 	update_moving_speed()
+	
+	if !GlobalVar.tutorial_shown:
+		manage_tutorial()
+	else:
+		tutorial_node.hide()
 	
 	# If player is looking at something
 	if ray.is_colliding():
@@ -232,6 +242,7 @@ func process_player_action_on_object(observed_object, raycast_object):
 					selected_item_sprite.texture = selected_item_bucket_empty
 			if carried_object == 4:
 				raycast_object.destroy_crop()
+				some_crop_destroyed = true
 		"GrainBin":
 			if carried_object == 5:
 				raycast_object.load_grain_mill()
@@ -315,6 +326,7 @@ func toggle_labels():
 		tooltip_label.hide()
 		prompt_label.hide()
 		fields_left_label.hide()
+		tutorial_label.hide()
 	else:
 		fields_left_label.show()
 		crop_status_label.show()
@@ -323,3 +335,41 @@ func toggle_labels():
 		tooltip_label.show()
 		prompt_label.show()
 		fields_left_label.show()
+		tutorial_label.show()
+
+func manage_tutorial():
+	match(tutorial_step):
+		1:
+			tutorial_label.text = "Select sickle with 2 or MMB scroll"
+			if carried_object == 2:
+				tutorial_step += 1
+		2:
+			tutorial_label.text = "Harvest some crop with sickle"
+			if carried_object == 5:
+				tutorial_step += 1
+		3:
+			tutorial_label.text = "Take crop to the harvest bin"
+			if carried_object == 2:
+				tutorial_step += 1
+		4:
+			tutorial_label.text = "Select bucket with 3 or MMB scroll"
+			if carried_object == 3:
+				tutorial_step += 1
+		5:
+			tutorial_label.text = "Look at well and left click"
+			if !is_bucket_empty:
+				tutorial_step += 1
+		6:
+			tutorial_label.text = "Use bucket by left clicking on crop"
+			if is_bucket_empty:
+				tutorial_step += 1
+		7:
+			tutorial_label.text = "Select spade with 4 or MMB scroll"
+			if carried_object == 4:
+				tutorial_step += 1
+		8:
+			tutorial_label.text = "Destroy some crop with spade"
+			if some_crop_destroyed:
+				tutorial_step += 1
+		9:
+			GlobalVar.tutorial_shown = true
